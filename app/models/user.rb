@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-has_security_password
+has_secure_password
 
   belongs_to :role
   has_many :orders

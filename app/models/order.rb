@@ -5,8 +5,8 @@ class Order < ApplicationRecord
   has_many :order_details
   has_many :products, through: :order_details
 
-  validate :number, presence: true, uniqueness: true
-  validate :total, presence: true
-  validate :user_id, presence: true
-  validate :status_id, presence: true
+  validates :number, presence: true, uniqueness: true
+  validates :total, presence: true
+  validates :user_id, presence: true
+  validates :status_id, presence: true
 end
