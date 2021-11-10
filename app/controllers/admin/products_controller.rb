@@ -10,29 +10,31 @@ class Admin::ProductsController < ApplicationController
 
     def new
       @product = Product.new
-      @categories = Category.all
+      set_categories # @categories = Category.all
     end
   
     def show
     end
   
     def edit
+      set_categories
     end
   
     def create
-      @product = Product.new(params_product)
-      if @product #.save
+      @product = Product.new(params_products)
+      if @product.save
         redirect_to admin_products_path
       else
-        @categories = Category.all
+        set_categories #@categories = Category.all
         render :new
       end
     end
   
     def update
-      if @product.update(params_product)
+      if @product.update(params_products)
         redirect_to admin_products_path
       else
+        set_categories
         render :edit
       end
     end
@@ -43,15 +45,19 @@ class Admin::ProductsController < ApplicationController
     end
   
     private
-    def params_products
-      params.require(:products).permit(:name)
-    end
-  
+
     def set_product
       @product = Product.find(params[:id])
     rescue
       flash[:set_product_error] = "Could not find the record #{params[:id]}"
       redirect_to admin_products_path
     end
-    
-  end
+
+    def params_products
+      params.require(:product).permit(:name, :price, :description, :category_id)
+    end
+
+    def set_categories
+      @categories = Category.all
+    end
+end
