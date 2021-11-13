@@ -5,7 +5,8 @@ class Admin::ProductsController < ApplicationController
     before_action :set_product, only: [:show, :edit, :update, :delete]
 
   def index
-      @products = Product.all
+      # @products = Product.all # Problema N+1
+      @product = Product.includes(:category)
     end
 
     def new
@@ -34,7 +35,7 @@ class Admin::ProductsController < ApplicationController
       if @product.update(params_products)
         redirect_to admin_products_path
       else
-        set_categories
+        set_categories #@categories = Category.all
         render :edit
       end
     end

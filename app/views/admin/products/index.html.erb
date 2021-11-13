@@ -26,8 +26,8 @@
                     <td> <%= p.description %> </td>
                     <td> <%= p.category.name %> </td>
                     <td>
-                        <%= link_to "Edit", admin_edit_role_path(p) %>
-                        <%= link_to "Delete", admin_role_path(p), method: :delete %>
+                        <%= link_to "Edit", admin_edit_product_path(p) %>
+                        <%= link_to "Delete", admin_product_path(p), method: :delete %>
                     </td>
                 </tr>
             <% end %>

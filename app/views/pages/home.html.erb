@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+    <%= @product.each do |p| %>
+        <div class="col-3 mb-3">
+            <%= render 'product_card', base_product: p %>
+        </div>
+    <% end %>
+</div>
+    

@@ -1,14 +1,14 @@
 class PagesController < ApplicationController
-  def home
 
-    if cookies[:cart_id]
-      @cart = Cart.find(cookie[:cart_id])
-    else
+  include PagesHelper
+  
+  before_action :set_cart_from_cookie
 
-      @cart = Cart.create(total: 0)
-      cookies[:cart_id] = @cart.id
-
-    end
-
+  def home  
+    @products = Product.includes(:category).shuffle
   end
+
+  def cart
+  end
+
 end
