@@ -23,3 +23,12 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+production:
+  <<: *default
+  database: store # db/production.sqlite3
+  host: <%= Rails.application.credentials.db_production[:host] %>
+  port: <%= Rails.application.credentials.db_production[:port] %>
+  username: <%= Rails.application.credentials.db_production[:username] %>
+  password: <%= Rails .application.credentials.db_production[:password] %>
+  adapter: postgresql
