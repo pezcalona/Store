@@ -4,5 +4,5 @@ class CartProduct < ApplicationRecord
   
   validates :cart_id, presence: true
   validates :product_id, presence: true
-  validates :quantity. presence: true, numericality: true
+  validates :quantity, presence: true, numericality: true
 end

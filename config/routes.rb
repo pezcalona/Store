@@ -48,6 +48,9 @@ Rails.application.routes.draw do
     patch   'roles/:id',       to: 'roles#update'
     delete  'roles/:id',       to: 'roles#destroy'
 
+    #FALTA
+    #roles's status
+
   end
 
 end
